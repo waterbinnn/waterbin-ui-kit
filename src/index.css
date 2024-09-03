@@ -1,0 +1,6 @@
+@layer reset, base, tokens, recipes, utilities;
+
+:root {
+  --pretendard: 'pretendard', sans-serif, system-ui;
+}
+
