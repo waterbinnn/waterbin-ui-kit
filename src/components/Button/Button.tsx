@@ -2,6 +2,7 @@ import React from 'react';
 import { css, cva } from 'styled-system/css';
 import { ReactComponent as Loading } from '@/assets/icons/loading.svg';
 import { ReactComponent as LoadingDark } from '@/assets/icons/loading_dark.svg';
+import { Colors, Size, Variant } from './Button.type';
 
 const button = cva({
   base: {
@@ -117,13 +118,13 @@ const iconTextStyle = css({
 
 type ButtonCVAProps = NonNullable<Parameters<typeof button>[0]>;
 
-export type ButtonProps = {
+type ButtonProps = {
   className?: string;
   children?: React.ReactNode;
-  variant?: ButtonCVAProps['variant'];
-  color?: ButtonCVAProps['color'];
-  outlineColor?: ButtonCVAProps['outlineColor'];
-  size?: ButtonCVAProps['size'];
+  variant?: Variant;
+  color?: Colors;
+  outlineColor?: Colors;
+  size?: Size;
   rounded?: boolean;
   fullWidth?: boolean;
   disabled?: boolean;
@@ -180,3 +181,4 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 );
 
 export default Button;
+export type { ButtonCVAProps, ButtonProps };
