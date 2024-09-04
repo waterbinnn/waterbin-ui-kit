@@ -3,7 +3,7 @@
   "author": "waterbinnn",
   "private": false,
   "license": "MIT",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "type": "module",
   "main": "./dist/index.js",
   "types": "dist/index.d.ts",
@@ -20,7 +20,7 @@
   "scripts": {
     "prepare": "panda codegen",
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "rm -rf ./dist && tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
