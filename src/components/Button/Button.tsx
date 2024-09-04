@@ -1,7 +1,7 @@
 import React from 'react';
-import { css, cva } from '../../../styled-system/css';
-import { ReactComponent as Loading } from '../../assets/icons/loading.svg';
-import { ReactComponent as LoadingDark } from '../../assets/icons/loading_dark.svg';
+import { css, cva } from 'styled-system/css';
+import { ReactComponent as Loading } from '@/assets/icons/loading.svg';
+import { ReactComponent as LoadingDark } from '@/assets/icons/loading_dark.svg';
 
 const button = cva({
   base: {

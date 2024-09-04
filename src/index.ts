@@ -1,3 +1,4 @@
-import Button from './components/Button/Button';
+import './index.css';
 
-export { Button };
+export { default as Button } from '@/components/Button/Button';
+export type { ButtonProps } from './components/Button/Button';

@@ -13,14 +13,19 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "types": ["node", "vite/client"],
+    "typeRoots": ["index.d.ts", "node_modules/@types"],
 
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
-  "include": ["src"],
+  "include": ["src", "types/global.d.ts", "styled-system"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

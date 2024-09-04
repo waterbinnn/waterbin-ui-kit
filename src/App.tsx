@@ -1,7 +1,7 @@
-import { hstack } from '../styled-system/patterns';
-import { css } from '../styled-system/css';
-import Button from './components/Button/Button';
-import { ReactComponent as Download } from '../src/assets/icons/download.svg';
+import { hstack } from 'styled-system/patterns';
+import { css } from 'styled-system/css';
+import Button from '@/components/Button/Button';
+import { ReactComponent as Download } from '@/assets/icons/download.svg';
 
 function App() {
   return (
@@ -48,7 +48,7 @@ function App() {
           <Button variant='iconText' loading icon={<Download />}>
             아이콘 버튼
           </Button>
-          <Button variant='iconText' disabled icon={<Download />}>
+          <Button variant='filled' disabled icon={<Download />}>
             아이콘 버튼
           </Button>
 
