@@ -138,7 +138,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       className,
       variant = 'filled',
       children,
-      size,
+      size = 'md',
       rounded = false,
       fullWidth = false,
       outlineColor,
