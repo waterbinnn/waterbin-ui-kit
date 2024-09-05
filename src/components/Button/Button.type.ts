@@ -1,6 +1,7 @@
 type Size = 'icon' | 'sm' | 'md' | 'lg';
 
 type Colors =
+  | 'white'
   | 'black'
   | 'red'
   | 'orange'
