@@ -8,6 +8,13 @@
 
 `yarn add @waterbin/ui-kit`
 
+✅ Requirements
+
+```
+- React ≥ 18.x
+- ReactDom ≥ 18.x
+```
+
 ### Dependencies
 
 ```
@@ -18,7 +25,4 @@
 - Storybook
 ```
 
-**개발 현재 진행형**
-
-- npm 배포 완료
-- 버튼 컴포넌트 진행중
+## Note
