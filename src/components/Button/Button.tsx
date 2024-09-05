@@ -1,8 +1,8 @@
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { css, cva } from 'styled-system/css';
 import { ReactComponent as Loading } from '@/assets/icons/loading.svg';
 import { ReactComponent as LoadingDark } from '@/assets/icons/loading_dark.svg';
-import { Colors, Size, Variant } from './Button.type';
+import { ButtonProps } from './Button.type';
 
 const button = cva({
   base: {
@@ -123,20 +123,6 @@ const iconTextStyle = css({
   fontStyle: 'normal',
 });
 
-type ButtonProps = {
-  className?: string;
-  children?: React.ReactNode;
-  variant?: Variant;
-  color?: Colors;
-  outlineColor?: Colors;
-  size?: Size;
-  rounded?: boolean;
-  fullWidth?: boolean;
-  disabled?: boolean;
-  loading?: boolean;
-  icon?: React.ReactNode;
-};
-
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
@@ -151,7 +137,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       icon,
       loading = false,
       ...rest
-    }: ButtonProps,
+    },
     ref
   ) => {
     return (

@@ -1,3 +1,5 @@
+import { ButtonHTMLAttributes } from 'react';
+
 type Size = 'icon' | 'sm' | 'md' | 'lg';
 
 type Colors =
@@ -18,4 +20,20 @@ type Colors =
 
 type Variant = 'filled' | 'outline' | 'iconText' | 'icon' | 'link';
 
-export type { Size, Colors, Variant };
+type ButtonExtends = ButtonHTMLAttributes<HTMLButtonElement>;
+
+interface ButtonProps extends ButtonExtends {
+  className?: string;
+  children?: React.ReactNode;
+  variant?: Variant;
+  color?: Colors;
+  outlineColor?: Colors;
+  size?: Size;
+  rounded?: boolean;
+  fullWidth?: boolean;
+  disabled?: boolean;
+  loading?: boolean;
+  icon?: React.ReactNode;
+}
+
+export type { Size, Colors, Variant, ButtonExtends, ButtonProps };
