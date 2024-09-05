@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { css, cva } from 'styled-system/css';
 import { ReactComponent as Loading } from '@/assets/icons/loading.svg';
 import { ReactComponent as LoadingDark } from '@/assets/icons/loading_dark.svg';
@@ -37,10 +37,15 @@ const button = cva({
         borderColor: 'stone.800',
         color: 'stone.800',
       },
-      iconText: {},
+      iconText: {
+        border: '1px solid',
+        borderColor: 'transparent',
+      },
       icon: {
         minWidth: '36px',
         minHeight: '36px',
+        border: '1px solid',
+        borderColor: 'transparent',
       },
       link: {
         bg: 'transparent',
@@ -67,6 +72,7 @@ const button = cva({
       },
     },
     outlineColor: {
+      white: { borderColor: 'white', color: 'white' },
       black: { borderColor: 'black', color: 'black' },
       red: { borderColor: 'red', color: 'red' },
       orange: { borderColor: 'orange', color: 'orange' },
@@ -82,6 +88,7 @@ const button = cva({
       brown: { borderColor: 'brown', color: 'brown' },
     },
     color: {
+      white: { bg: 'white', color: 'black' },
       black: { bg: 'black', color: 'white' },
       red: { bg: 'red', color: 'white' },
       orange: { bg: 'orange', color: 'white' },
@@ -116,8 +123,6 @@ const iconTextStyle = css({
   fontStyle: 'normal',
 });
 
-type ButtonCVAProps = NonNullable<Parameters<typeof button>[0]>;
-
 type ButtonProps = {
   className?: string;
   children?: React.ReactNode;
@@ -132,7 +137,7 @@ type ButtonProps = {
   icon?: React.ReactNode;
 };
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       className,
@@ -146,7 +151,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       icon,
       loading = false,
       ...rest
-    },
+    }: ButtonProps,
     ref
   ) => {
     return (
@@ -181,4 +186,4 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 );
 
 export default Button;
-export type { ButtonCVAProps, ButtonProps };
+export type { ButtonProps };
