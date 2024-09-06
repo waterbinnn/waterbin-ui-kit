@@ -1,8 +1,13 @@
 # @waterbin/ui-kit
 
 > 개인 프로젝트 용으로 만든 디자인 시스템입니다. <br/>
-> npm 패키지
-> [@waterbin/ui-kit](https://www.npmjs.com/package/@waterbin/ui-kit)
+
+### Links
+↗️ npm 패키지
+[@waterbin/ui-kit](https://www.npmjs.com/package/@waterbin/ui-kit)
+ 
+↗️ Storybook website
+[@waterbin/ui-kit 스토리북](https://66da88368892406aa3d23d0b-zxhxqcnysu.chromatic.com/?path=/docs/configure-storybook--docs)
 
 ### Installation
 
