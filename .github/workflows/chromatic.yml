@@ -1,22 +1,21 @@
-# Workflow name
 name: 'Chromatic Deployment'
 
-# Event for the workflow
 on: push
 
-# List of jobs
 jobs:
   test:
-    # Operating System
     runs-on: ubuntu-latest
-    # Job steps
     steps:
       - uses: actions/checkout@v1
-      - run: yarn
-        #👇 Adds Chromatic as a step in the workflow
-      - uses: chromaui/action@v1
-        # Options required for Chromatic's GitHub Action
+      # Node.js 버전을 20.x로 설정
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          #👇 Chromatic projectToken, see https://storybook.js.org/tutorials/intro-to-storybook/react/ko/deploy/ to obtain it
+          node-version: '20.x'
+      # Yarn 설치 및 패키지 설치
+      - run: yarn
+      # Chromatic 배포
+      - uses: chromaui/action@v1
+        with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
