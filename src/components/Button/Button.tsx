@@ -2,7 +2,16 @@ import { forwardRef } from 'react';
 import { css, cva } from 'styled-system/css';
 import { ReactComponent as Loading } from '@/assets/icons/loading.svg';
 import { ReactComponent as LoadingDark } from '@/assets/icons/loading_dark.svg';
-import { ButtonProps } from './Button.type';
+import { ButtonProps, Colors } from './Button.type';
+
+const colorFn = (bg: Colors) => {
+  const isWhite = bg === 'white';
+  return { bg, text: isWhite ? 'black' : 'white' };
+};
+
+const outlineColorFn = (border: Colors) => {
+  return { borderColor: border, color: border };
+};
 
 const button = cva({
   base: {
@@ -72,36 +81,36 @@ const button = cva({
       },
     },
     outlineColor: {
-      white: { borderColor: 'white', color: 'white' },
-      black: { borderColor: 'black', color: 'black' },
-      red: { borderColor: 'red', color: 'red' },
-      orange: { borderColor: 'orange', color: 'orange' },
-      yellow: { borderColor: 'yellow', color: 'yellow' },
-      green: { borderColor: 'green', color: 'green' },
-      mint: { borderColor: 'mint', color: 'mint' },
-      teal: { borderColor: 'teal', color: 'teal' },
-      cyan: { borderColor: 'cyan', color: 'cyan' },
-      blue: { borderColor: 'blue', color: 'blue' },
-      indigo: { borderColor: 'indigo', color: 'indigo' },
-      purple: { borderColor: 'purple', color: 'purple' },
-      pink: { borderColor: 'pink', color: 'pink' },
-      brown: { borderColor: 'brown', color: 'brown' },
+      white: outlineColorFn('white'),
+      black: outlineColorFn('black'),
+      red: outlineColorFn('red'),
+      orange: outlineColorFn('orange'),
+      yellow: outlineColorFn('yellow'),
+      green: outlineColorFn('green'),
+      mint: outlineColorFn('mint'),
+      teal: outlineColorFn('teal'),
+      cyan: outlineColorFn('cyan'),
+      blue: outlineColorFn('blue'),
+      indigo: outlineColorFn('indigo'),
+      purple: outlineColorFn('purple'),
+      pink: outlineColorFn('pink'),
+      brown: outlineColorFn('brown'),
     },
     color: {
-      white: { bg: 'white', color: 'black' },
-      black: { bg: 'black', color: 'white' },
-      red: { bg: 'red', color: 'white' },
-      orange: { bg: 'orange', color: 'white' },
-      yellow: { bg: 'yellow', color: 'white' },
-      green: { bg: 'green', color: 'white' },
-      mint: { bg: 'mint', color: 'white' },
-      teal: { bg: 'teal', color: 'white' },
-      cyan: { bg: 'cyan', color: 'white' },
-      blue: { bg: 'blue', color: 'white' },
-      indigo: { bg: 'indigo', color: 'white' },
-      purple: { bg: 'purple', color: 'white' },
-      pink: { bg: 'pink', color: 'white' },
-      brown: { bg: 'brown', color: 'white' },
+      white: colorFn('white'),
+      black: colorFn('black'),
+      red: colorFn('red'),
+      orange: colorFn('orange'),
+      yellow: colorFn('yellow'),
+      green: colorFn('green'),
+      mint: colorFn('mint'),
+      teal: colorFn('teal'),
+      cyan: colorFn('cyan'),
+      blue: colorFn('blue'),
+      indigo: colorFn('indigo'),
+      purple: colorFn('purple'),
+      pink: colorFn('pink'),
+      brown: colorFn('brown'),
     },
     loading: {
       true: {
