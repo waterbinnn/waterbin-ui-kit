@@ -19,7 +19,7 @@
   ],
   "private": false,
   "license": "MIT",
-  "version": "0.0.2-beta",
+  "version": "0.0.3-popover",
   "type": "module",
   "main": "./dist/index.js",
   "types": "dist/index.d.ts",
