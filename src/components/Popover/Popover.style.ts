@@ -1,0 +1,88 @@
+import { css } from 'styled-system/css';
+import { Placement } from './Popover.type';
+
+const popover = css({
+  position: 'relative',
+  display: 'inline-flex',
+  width: '100%',
+});
+
+const popoverHandler = css({
+  display: 'inline-flex',
+});
+
+const popoverContent = css({
+  position: 'absolute',
+  minWidth: 'max-content',
+  zIndex: 10,
+});
+
+const placementStyle = (
+  handlerSize: DOMRect,
+  contentSize: DOMRect | null,
+  placement: Placement,
+  offset: number
+) => {
+  if (!handlerSize || !contentSize) {
+    return;
+  }
+  const setHorizontalPosition = (
+    horizontalPosition: 'left' | 'right',
+    align: 'start' | 'end' | 'center'
+  ) => {
+    const leftSize = handlerSize.width + offset;
+    const contentCenterPosition = (handlerSize.height - contentSize.height) / 2;
+
+    const sideValues = {
+      start: { top: '0px' },
+      end: { bottom: '0px' },
+      center: { top: `${contentCenterPosition}px` },
+    };
+
+    return {
+      left: horizontalPosition === 'left' ? `-${leftSize}px` : `${leftSize}px`,
+      ...sideValues[align],
+    };
+  };
+
+  const setVerticalPosition = (
+    verticalPosition: 'top' | 'bottom',
+    align: 'start' | 'end' | 'center'
+  ) => {
+    const topSize = handlerSize.height + offset;
+    const contentCenterPosition = (handlerSize.width - contentSize.width) / 2;
+
+    const verticalValues = {
+      start: { left: '0px' },
+      end: { right: '0px' },
+      center: { left: `${contentCenterPosition}px` },
+    };
+
+    return {
+      top: verticalPosition === 'top' ? `-${topSize}px` : `${topSize}px`,
+      ...verticalValues[align],
+    };
+  };
+
+  const positionStyleList = {
+    top: setVerticalPosition('top', 'center'),
+    'top-start': setVerticalPosition('top', 'start'),
+    'top-end': setVerticalPosition('top', 'end'),
+
+    bottom: setVerticalPosition('bottom', 'center'),
+    'bottom-start': setVerticalPosition('bottom', 'start'),
+    'bottom-end': setVerticalPosition('bottom', 'end'),
+
+    left: setHorizontalPosition('left', 'center'),
+    'left-start': setHorizontalPosition('left', 'start'),
+    'left-end': setHorizontalPosition('left', 'end'),
+
+    right: setHorizontalPosition('right', 'center'),
+    'right-start': setHorizontalPosition('right', 'start'),
+    'right-end': setHorizontalPosition('right', 'end'),
+  };
+
+  return positionStyleList[placement];
+};
+
+export { popover, popoverContent, popoverHandler, placementStyle };

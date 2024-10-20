@@ -1,5 +1,4 @@
-import { usePopup } from '@/store';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 
 import {
   placementStyle,
@@ -7,93 +6,77 @@ import {
   popoverContent,
   popoverHandler,
 } from './Popover.style';
-import { Placement } from './Popover.type';
+import {
+  PopoverContentProps,
+  PopoverHandlerProps,
+  PopoverProps,
+} from './Popover.type';
 import { useOutsideClick } from '@/hooks';
+import { usePopover } from '@/hooks';
+import { PopoverProvider } from '@/context';
+
 import { css } from 'styled-system/css';
 
-interface Props {
-  children: React.ReactNode;
-  classNames?: string;
-}
-
-const Popover = ({ children, classNames }: Props) => {
-  const popupRef = useRef<HTMLDivElement>(null);
-  const { onClose } = usePopup();
+const PopoverComponent = ({ children, classNames }: PopoverProps) => {
+  const { popupRef, onClose } = usePopover();
 
   useOutsideClick(popupRef, onClose);
 
-  const handlePreventPropagation = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
-    e.stopPropagation();
-  };
-
   return (
-    <div
-      onClick={handlePreventPropagation}
-      className={`${popover}, ${classNames}`}
-      ref={popupRef}
-    >
+    <div className={`${popover}, ${classNames}`} ref={popupRef}>
       {children}
     </div>
   );
 };
 
-const PopoverHandler = ({ children }: Props) => {
-  const { onOpen, onClose, setHandlerRect } = usePopup();
-  const isOpen = usePopup((state) => state.isOpen);
-
-  const handlerRef = useRef<HTMLDivElement>(null);
+const PopoverHandler = ({ children, classNames }: PopoverHandlerProps) => {
+  const { handlerRef, setHandlerRect, togglePopup } = usePopover();
 
   useEffect(() => {
     if (handlerRef.current) {
       const handlerRect = handlerRef.current.getBoundingClientRect();
       setHandlerRect(handlerRect);
     }
-  }, [setHandlerRect]);
-
-  const togglePopup = useCallback(() => {
-    if (isOpen) {
-      onClose();
-    } else {
-      onOpen();
-    }
-  }, [isOpen, onClose, onOpen]);
+  }, [handlerRef, setHandlerRect]);
 
   return (
-    <div className={popoverHandler} ref={handlerRef} onClick={togglePopup}>
+    <div
+      className={`${popoverHandler} ${classNames}`}
+      ref={handlerRef}
+      onClick={togglePopup}
+    >
       {children}
     </div>
   );
 };
 
-interface PopoverContent {
-  children: React.ReactNode;
-  placement: Placement;
-}
-
-const PopoverContent = ({ children, placement = 'bottom' }: PopoverContent) => {
-  const isOpen = usePopup((state) => state.isOpen);
-  const handlerRect = usePopup((state) => state.handlerRect);
-
-  const contentRef = useRef<HTMLDivElement>(null);
-  const [contentRect, setContentRect] = useState<DOMRect | null>(null);
-  console.log(contentRect);
+const PopoverContent = ({
+  children,
+  placement = 'bottom',
+  offset = 4,
+}: PopoverContentProps) => {
+  const { isOpen, contentRef, handlerRect, contentRect, setContentRect } =
+    usePopover();
 
   useEffect(() => {
     if (contentRef.current) {
       const getContentRect = contentRef.current.getBoundingClientRect();
       setContentRect(getContentRect);
     }
-  }, [isOpen]);
-
-  if (!handlerRect) return;
+  }, [contentRef, setContentRect, isOpen]);
 
   const dynamicClass = css({
     visibility: isOpen ? 'visible' : 'hidden',
   });
 
-  const placementStyles = placementStyle(handlerRect, contentRect, placement);
+  if (!handlerRect) return;
+
+  const placementStyles = placementStyle(
+    handlerRect,
+    contentRect,
+    placement,
+    offset
+  );
 
   return (
     <div
@@ -106,4 +89,12 @@ const PopoverContent = ({ children, placement = 'bottom' }: PopoverContent) => {
   );
 };
 
-export { Popover, PopoverContent, PopoverHandler };
+const PopoverRoot = ({ children, classNames }: PopoverProps) => {
+  return (
+    <PopoverProvider>
+      <PopoverComponent classNames={classNames}>{children}</PopoverComponent>
+    </PopoverProvider>
+  );
+};
+
+export { PopoverRoot as Popover, PopoverHandler, PopoverContent };
