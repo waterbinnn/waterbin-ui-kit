@@ -30,7 +30,6 @@ const placementStyle = (
     horizontalPosition: 'left' | 'right',
     align: 'start' | 'end' | 'center'
   ) => {
-    const leftSize = handlerSize.width + offset;
     const contentCenterPosition = (handlerSize.height - contentSize.height) / 2;
 
     const sideValues = {
@@ -40,7 +39,10 @@ const placementStyle = (
     };
 
     return {
-      left: horizontalPosition === 'left' ? `-${leftSize}px` : `${leftSize}px`,
+      left:
+        horizontalPosition === 'left'
+          ? `-${contentSize.width + offset}px`
+          : `${handlerSize.width + offset}px`,
       ...sideValues[align],
     };
   };
@@ -49,7 +51,6 @@ const placementStyle = (
     verticalPosition: 'top' | 'bottom',
     align: 'start' | 'end' | 'center'
   ) => {
-    const topSize = handlerSize.height + offset;
     const contentCenterPosition = (handlerSize.width - contentSize.width) / 2;
 
     const verticalValues = {
@@ -57,9 +58,12 @@ const placementStyle = (
       end: { right: '0px' },
       center: { left: `${contentCenterPosition}px` },
     };
-
+    console.log(handlerSize.height);
     return {
-      top: verticalPosition === 'top' ? `-${topSize}px` : `${topSize}px`,
+      top:
+        verticalPosition === 'top'
+          ? `-${contentSize.height + offset}px`
+          : `${handlerSize.height + offset}px`,
       ...verticalValues[align],
     };
   };
