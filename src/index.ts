@@ -1,4 +1,13 @@
 import './index.css';
 
-export { default as Button } from '@/components/Button/Button';
-export type { ButtonProps } from './components/Button/Button';
+export { useOutsideClick } from '@/hooks';
+
+export { Button, Popover, PopoverHandler, PopoverContent } from '@/components';
+
+export type {
+  ButtonProps,
+  PopoverProps,
+  PopoverHandlerProps,
+  PopoverContentProps,
+  Placement,
+} from '@/components';
