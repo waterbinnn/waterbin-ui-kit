@@ -8,7 +8,7 @@
 [@waterbin/ui-kit](https://www.npmjs.com/package/@waterbin/ui-kit)
 
 ↗️ Storybook website
-[@waterbin/ui-kit 스토리북](https://66da88368892406aa3d23d0b-zxhxqcnysu.chromatic.com/?path=/docs/configure-storybook--docs)
+[@waterbin/ui-kit 스토리북](https://66da88368892406aa3d23d0b-vhusfryqfa.chromatic.com/)
 
 ### Installation
 
