@@ -10,7 +10,13 @@ import { libInjectCss } from 'vite-plugin-lib-inject-css';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), svgr(), dts(), tsconfigPaths(), libInjectCss()],
+  plugins: [
+    react(),
+    svgr(),
+    dts({ exclude: ['./src/stories'] }),
+    tsconfigPaths(),
+    libInjectCss(),
+  ],
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
@@ -26,7 +32,12 @@ export default defineConfig({
     rollupOptions: {
       external: ['react', 'react-dom', 'react/jsx-runtime'],
       input: Object.fromEntries(
-        globSync(['src/components/**/index.ts', 'src/index.ts']).map((file) => {
+        globSync([
+          'src/components/**/index.ts',
+          'src/hooks/**/index.ts',
+          'src/context/**/index.ts',
+          'src/index.ts',
+        ]).map((file) => {
           const entryName = path.relative(
             'src',
             file.slice(0, file.length - path.extname(file).length)
@@ -36,7 +47,9 @@ export default defineConfig({
         })
       ),
       output: {
-        entryFileNames: '[name].js',
+        entryFileNames: 'entry/[name].js',
+        chunkFileNames: 'chunks/[name].js',
+        assetFileNames: 'styles/[name][extname]',
         globals: {
           react: 'React',
           'react-dom': 'React-dom',
