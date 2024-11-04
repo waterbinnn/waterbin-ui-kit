@@ -1,6 +1,7 @@
 import './index.css';
 
-export { useOutsideClick } from '@/hooks';
+export { useOutsideClick, usePopover } from '@/hooks';
+export { PopoverContext } from '@/context';
 
 export { Button, Popover, PopoverHandler, PopoverContent } from '@/components';
 
