@@ -1,6 +1,5 @@
-import { cva } from 'class-variance-authority';
-import { css } from 'styled-system/css';
-import { ButtonProps, Colors } from './Button.type';
+import { css, cva } from 'styled-system/css';
+import { Colors } from './Button.type';
 
 const colorFn = (bg: Colors) => {
   const isWhite = bg === 'white';
@@ -120,7 +119,7 @@ const buttonStyle = cva({
     variant: 'filled',
     size: 'md',
   },
-}) as (props: ButtonProps) => string;
+});
 
 const spinner = css({
   animation: 'spin',
