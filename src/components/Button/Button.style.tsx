@@ -21,7 +21,6 @@ const buttonStyle = cva({
     bg: 'black',
     color: 'white',
     fontWeight: 500,
-    fontFamily: 'pretendard',
     cursor: 'pointer',
     userSelect: 'none',
     _disabled: {

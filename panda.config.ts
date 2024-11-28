@@ -10,17 +10,13 @@ export default defineConfig({
   // Files to exclude
   exclude: [],
   globalVars: {
-    '--font-pretendard': 'pretendard, sans-serif, system-ui',
+    '--font-pretendard':
+      'Pretendard Variable Pretendard -apple-system BlinkMacSystemFont system-ui Roboto Helvetica Neue Segoe UI Apple SD Gothic Neo Noto Sans KR Malgun Gothic, Apple Color Emoji Segoe UI Emoji Segoe UI Symbol sans-serif',
   },
   // Useful for theme customization
   theme: {
     extend: {
       tokens: {
-        fonts: {
-          pretendard: {
-            value: 'var(--font-pretendard)',
-          },
-        },
         colors: {
           red: { value: '#ff453a' },
           orange: { value: '#ff9f0a' },
