@@ -47,9 +47,7 @@ export default defineConfig({
         })
       ),
       output: {
-        entryFileNames: 'entry/[name].js',
-        chunkFileNames: 'chunks/[name].js',
-        assetFileNames: 'styles/[name][extname]',
+        entryFileNames: '[name].js',
         globals: {
           react: 'React',
           'react-dom': 'React-dom',
