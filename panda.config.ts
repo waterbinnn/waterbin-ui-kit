@@ -9,13 +9,17 @@ export default defineConfig({
 
   // Files to exclude
   exclude: [],
-
+  globalVars: {
+    '--font-pretendard': 'pretendard, sans-serif, system-ui',
+  },
   // Useful for theme customization
   theme: {
     extend: {
       tokens: {
         fonts: {
-          pretendard: { value: 'var(--pretendard), sans-serif, system-ui' },
+          pretendard: {
+            value: 'var(--font-pretendard)',
+          },
         },
         colors: {
           red: { value: '#ff453a' },
