@@ -58,7 +58,7 @@ const placementStyle = (
       end: { right: '0px' },
       center: { left: `${contentCenterPosition}px` },
     };
-    console.log(handlerSize.height);
+
     return {
       top:
         verticalPosition === 'top'
