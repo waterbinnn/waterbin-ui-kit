@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 
 import {
   placementStyle,
@@ -32,7 +32,7 @@ const PopoverComponent = ({ children, classNames }: PopoverProps) => {
 const PopoverHandler = ({ children, classNames }: PopoverHandlerProps) => {
   const { handlerRef, setHandlerRect, togglePopup } = usePopover();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (handlerRef.current) {
       const handlerRect = handlerRef.current.getBoundingClientRect();
       setHandlerRect(handlerRect);
@@ -58,7 +58,7 @@ const PopoverContent = ({
   const { isOpen, contentRef, handlerRect, contentRect, setContentRect } =
     usePopover();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (contentRef.current) {
       const getContentRect = contentRef.current.getBoundingClientRect();
       setContentRect(getContentRect);

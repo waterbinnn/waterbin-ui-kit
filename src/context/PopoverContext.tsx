@@ -16,13 +16,13 @@ const PopoverContext = createContext<ProviderContextType>({
 });
 
 const PopoverProvider = ({ children }: { children: React.ReactNode }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false); //popover open state
-  const [handlerRect, setHandlerRect] = useState<DOMRect | null>(null); //contain handler rect size
-  const [contentRect, setContentRect] = useState<DOMRect | null>(null); //contain content rect size
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [handlerRect, setHandlerRect] = useState<DOMRect | null>(null);
+  const [contentRect, setContentRect] = useState<DOMRect | null>(null);
 
-  const popupRef = useRef<HTMLDivElement>(null); //popover ref
-  const handlerRef = useRef<HTMLDivElement>(null); //handler ref
-  const contentRef = useRef<HTMLDivElement>(null); //contents ref
+  const popupRef = useRef<HTMLDivElement>(null);
+  const handlerRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   const togglePopup = useCallback(() => {
     setIsOpen((prev) => !prev);
