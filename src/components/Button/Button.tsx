@@ -17,10 +17,18 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       color,
       icon,
       loading = false,
+      iconPosition = 'end',
       ...rest
     },
     ref
   ) => {
+    const renderIcon = () => {
+      if (variant === 'iconText' || variant === 'icon') {
+        return <i className={iconTextStyle}>{icon}</i>;
+      }
+      return null;
+    };
+
     return (
       <button
         className={`${buttonStyle({
@@ -42,11 +50,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             <Loading className={spinner} />
           ))}
 
-        {(variant === 'iconText' || variant === 'icon') && !loading && (
-          <i className={iconTextStyle}>{icon}</i>
-        )}
-
-        {children}
+        {iconPosition === 'start' && renderIcon()}
+        {variant !== 'icon' && <>{children}</>}
+        {iconPosition === 'end' && renderIcon()}
       </button>
     );
   }
