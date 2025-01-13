@@ -34,6 +34,7 @@ interface ButtonProps extends ButtonExtends {
   disabled?: boolean;
   loading?: boolean;
   icon?: React.ReactNode;
+  iconPosition?: 'start' | 'end';
 }
 
 export type { Size, Colors, Variant, ButtonExtends, ButtonProps };
